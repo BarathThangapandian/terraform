@@ -17,7 +17,7 @@ resource "aws_eip" "barat"{
 
 resource "aws_eip_association" "eip_assoc" {
   instance_id   = aws_instance.tester.id
-  allocation_id = aws_eip.barat.public_ip
+  allocation_id = aws_eip.barat.id
 }
 
 resource "aws_security_group" "allow_eip" {
