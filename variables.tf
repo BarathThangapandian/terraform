@@ -50,4 +50,9 @@ variable "instance" {
 }
 root@ip-172-31-15-12:~/terraform# 
 
+custome var file
+terraform plan -var-file=custome.tfvar 
+
+terraform plan -var="instance=t2.micro"
+
 
