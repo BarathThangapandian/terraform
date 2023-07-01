@@ -1,0 +1,32 @@
+#output.tf
+
+output "demo_elasticip"{
+value = aws_eip.barat.public_ip
+}
+
+
+##eip_sg.tf
+
+resource "aws_instance" "tester"{
+  ami           = "ami-0b9ecf71fe947bbdd"
+  instance_type = "t2.micro"
+}
+
+resource "aws_eip" "barat"{
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.tester.id
+  allocation_id = aws_eip.barat.public_ip
+}
+
+resource "aws_security_group" "allow_eip" {
+  description = "Allow eip inbound traffic"
+
+  ingress {
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["${aws_eip.barat.public_ip}/32"]
+  }
+}
