@@ -11,5 +11,6 @@ terraform fmt -write=false -diff output.tf  --> to show the incorrect formatting
 terraform fmt -diff  --> this will change the orginal files and show the output in terminal
 terraform fmt --> this will also change but will not show the output in terminal
 
-
+var command in variable file
+terraform output --> this command will give us the output alone from statefile
 
