@@ -1,4 +1,10 @@
 terraform {
+  backend "s3" {
+    bucket = "mytfbucket334422"
+    dynamodb_table = "state-lock"
+    key = "global/state/terraform.tfstate"
+    region = "ap-south-1"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -10,11 +16,11 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-west-2"
+  region  = "ap-south-1"
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-0f5ee92e2d63afc18"
   instance_type = "t2.micro"
 
   tags = {

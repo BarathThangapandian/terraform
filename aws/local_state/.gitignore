@@ -1,0 +1,4 @@
+.terraform.lock.hcl
+.terraform/
+../remote_state/.terraform.lock.hcl
+../remote_state/.terraform/
